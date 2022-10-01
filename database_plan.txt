@@ -1,0 +1,37 @@
+#############################
+# DATABASES FOR FLIGHT GAME #
+#############################
+This is a short mapping for database of flight game. 
+The database is planned following the plan_for_game.pdf gameplay. 
+The database is created and maintained using MariaDB.
+-----------------------------------------------------------------
+DATABASE_NAME: flight_game
+# TABLES REQUIRED:
+-----------------------------------------------------------------
+	TABLE NAME: game
+	TABLE FUNCTIONS: This is the first table player interacts with. 
+	 - The game starts when player creates a screen_name. 
+	 - The id is created while the player submits a screen_name. 
+	 - The CO2_consumed starts with a zero value and increases during the game depending on the players actions.
+	 - The location refers to the players location during the game. The program inserts a random location at the beginning of the game. 
+	METADATA: id PRI NOT NULL AUTO INCREMENT int(11), screen_name varchar(40), CO2_consumed float, location FK refers to country(iso_country) varchar(40)
+***
+	TABLE NAME: item
+	TABLE FUNCTIONS: This is the second table the player interacts with.
+	- The game continues with player receiving a list of the 5 random items player must collect in order to complete the game.
+	- A single item has an id so it can be referred easily. 
+	- Item name is important to make game play interesting for the user. 
+	- Location tells from which country the item can be collected. 
+	METADATA: id PRI NOT NULL AUTO INCREMENT int(11), name varchar(40), location FK refers to country(iso_country) varchar(40)
+****
+	TABLE NAME: country
+	TABLE FUNCTIONS: This is the third table player interacts with.
+	- When the items are given, the player is told the starting location ---> location(game) refers to the iso_country of country. 
+	- Player is given a list of continents to travel. 
+	- Antarctica is the only continent that refers straight to a single item. 
+	- According to the player's choice the program gives a numbered list of countries. 
+	- The location(game) is updated by players choice. 
+	- The CO2_consumed(game) is updated by the long-lat calculations of the country and the previous location. 
+	- If the item of required items list and item(location) matches the country and the item is not already in the inventory, the inventory(game) is updated.
+	METADATA: iso_country PRI NOT NULL AUTO INVEREMENT varchar (40), name varchar (40), lang float, lon float, continent varchar (40) 
+****
