@@ -7,7 +7,10 @@ CREATE TABLE game (id INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY, screen_name 
 CREATE TABLE item (id INT (11) NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR (40), location VARCHAR (40));
 -- No fk yet --
 -- Create country table --
-CREATE TABLE country (iso_country VARCHAR (40) NOT NULL PRIMARY KEY, name VARCHAR (40), continent VARCHAR (40), lat FLOAT, lon FLOAT);
+CREATE TABLE country (iso_country VARCHAR (40) NOT NULL PRIMARY KEY, name VARCHAR (40), continent VARCHAR (40), lat FLOAT, lon FLOAT)
+-- Create locations table --
+CREATE TABLE got_item (item_id int(11), game_id int(11));
+;
 
 
 
