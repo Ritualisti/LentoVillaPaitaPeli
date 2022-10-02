@@ -1,0 +1,32 @@
+##################
+# FLIGHT GAME PY #
+##################
+GAMEPLAY:
+------------------
+FUNCTIONS BEFORE EVEN TOUCHING main.py
+1. import functions to every file where you use sql-queries <---- make a file where you store all the functions needed = functions.py
+	# What should functions.py include: 
+		- a function that connects to the database = functions.connect_to_database()
+			* does not take any parameters.
+			* returns a variable named connection.
+			* this should be the first one, because other functions use sql queries
+		- a function that returns a random location = functions.random_location()
+			* make a variable connection = functions.connect_to_database()
+			* random_index = rand_int is quite a handy. You need to check out the amount of countries if you don't want the game to crash. 
+			* make a sql query for the country names.
+			* use random_index to find a random country name from the result
+			* returns location = name of the location 
+		- a function that creates a new username = functions.create_new_user(name, location, co2)
+			* connection = connect_to_database()
+			* make a sql query to import the parameters to the game table.
+			* function returns True. 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^ THE ABOVE IS VERY IMPORTANT FOR THE NEXT STEP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	# userinfo stored in a class UserInfo
+	# import functions
+	 * Tried to code this game without classes and the main.py alone looked horrible. 
+	 * Classes are named with CamelCase in python
+		- init: takes username (u_name) as a variable
+			*variables: self.name = u_name, self.u_id = "", self.u_loc = functions.random_location(), self.connection = functions.connect_to_database()
+				WHY THE PLACEHOLDER VALUES: we haven't added anything to the db yet, and id is auto increment, we will change the self.u_id later.
+			
+				
